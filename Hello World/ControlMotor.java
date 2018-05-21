@@ -42,4 +42,10 @@ public class ControlMotor
         
         
     }
+    
+    public static void main(String[] args)
+    {
+        ControlMotor motor = new ControlMotor();
+        motor.program1();
+    }
 }
