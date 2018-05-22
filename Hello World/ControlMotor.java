@@ -26,10 +26,12 @@ public class ControlMotor
     
     public void program2()
     {
+        
         System.out.println("Program 2");
-        Motor.A.setSpeed(2);
+        Button.waitForAnyPress();
+        Motor.A.setSpeed(720);
         Motor.A.forward();
-        Delay.msDelay(2);
+        Delay.msDelay(2000);
         
         System.out.println(Motor.A.getTachoCount());
         
@@ -37,15 +39,57 @@ public class ControlMotor
         
         System.out.println(Motor.A.getTachoCount());
         
-        Motor.A.backward();
+        double tacho = 1.0;
         
+        while(tacho > 0.0)
+        {
+            Motor.A.backward();
+            tacho = Motor.A.getTachoCount();
+        }
         
+        System.out.println(Motor.A.getTachoCount());
         
+        Motor.A.stop();
+        
+        System.out.println(Motor.A.getTachoCount());
+        
+        Button.waitForAnyPress();
+    }
+    
+    public void program3()
+    {
+        System.out.println("Program 3");
+        
+        Button.waitForAnyPress();
+        
+        Motor.C.rotate(1440);
+        
+        System.out.println(Motor.C.getTachoCount());
+        
+        Motor.C.rotateTo(0);
+        
+        System.out.println(Motor.C.getTachoCount());
+        
+        Button.waitForAnyPress();
+    }
+    
+    public void program4()
+    {
+        System.out.println("Program 4");
+        
+        Button.waitForAnyPress();
+        
+        Motor.C.rotate(-1440,true);
+        
+        while(immediate.isRotating() = true)
+        {
+            
+        }
     }
     
     public static void main(String[] args)
     {
         ControlMotor motor = new ControlMotor();
-        motor.program1();
+        motor.program3();
     }
 }
