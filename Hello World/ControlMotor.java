@@ -81,9 +81,13 @@ public class ControlMotor
         
         Motor.C.rotate(-1440,true);
         
-        while(immediate.isRotating() = true)
+        while(Motor.C.isMoving())
         {
-            
+            System.out.println(Motor.C.getTachoCount());
+            if(Button.readButtons() > 0)
+            {
+                Motor.C.stop();
+            }
         }
     }
     
